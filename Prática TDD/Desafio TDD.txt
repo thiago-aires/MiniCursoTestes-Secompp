@@ -1,0 +1,11 @@
+Desenvolver um carrinho de compras de uma loja virtual onde é possível adicionar N produtos com N quantidades, ao finalizar a compra o carrinho deve passar o valor total da compra da seguinte forma:
+
+Produto com valor unitário acima de 100 reais deve aplicar um desconto de 10% no valor unitário;
+
+Produto com mais de 10 quantidades (10 produtos iguais) deve aplicar um desconto de 10% no valor total do mesmo produto;
+
+Compras com valor total acima de 5000 reais deve aplicar um desconto de 20% do valor;
+
+
+Todos os descontos podem ser acumulados.
+
