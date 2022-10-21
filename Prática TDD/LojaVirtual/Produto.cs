@@ -17,5 +17,20 @@ namespace LojaVirtual
             Quantidade = quantidade;
             this.valor = valor;
         }
+
+        public Double CalcularTotal()
+        {
+            var descontoDesPorcento = 0.9;
+
+            if(valor > 100)
+                return valor * Quantidade * descontoDesPorcento;
+
+            if (Quantidade > 10)
+                return valor * Quantidade * descontoDesPorcento;
+
+
+
+            return valor * Quantidade;
+        }
     }
 }

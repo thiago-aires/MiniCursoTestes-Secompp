@@ -26,10 +26,17 @@ namespace LojaVirtual
         }
         public string FinalizarCompra()
         {
+            var descontoVintePorcento = 0.8;
+            var total = 0.0;
             if (!ListaDeCompras.Any())
                 return "erro";
             else
-                return "";
+            {
+                ListaDeCompras.ForEach(x => total+= x.CalcularTotal());
+            }
+            if (total > 5000)
+                total = total * descontoVintePorcento;
+            return total.ToString();
         }
     }
 }

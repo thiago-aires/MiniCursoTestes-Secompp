@@ -78,5 +78,43 @@ namespace LojaVirualTestes
             //assert
             resultado.Should().NotBe(erro);
         }
+
+        [Test]
+        public void FinalizarCompra_AoSerChamado_DeveCalcularCorretamenteOValorFinal()
+        {
+            // Arrange
+            CarrinhoDeCompras carrinho = new CarrinhoDeCompras();
+            Produto cerveja = new Produto("cerveja", 4, 3.5);
+            var totalEsperado = 3.5 * 4;
+            carrinho.AdicionarProduto(cerveja);
+
+
+            // Act
+            var resultado = carrinho.FinalizarCompra();
+
+            // Assert
+            resultado.Should().Be(totalEsperado.ToString());
+        }
+
+        [Test]
+        public void FinalizarCompra_QuandoOTotalForMaiorQue5000_DeveAplicarUmDescontoDeVintePorcento()
+        {
+            // Arrange
+            CarrinhoDeCompras carrinho = new CarrinhoDeCompras();
+            Produto geladeira = new Produto("geladeira", 1, 5005);
+            Produto cerveja = new Produto("cerveja", 50, 50.0);
+            var totalEsperadoDaGeladeira = (5005 * 1 * 0.9);
+            var totalEsperadoDaCerveja = 50 * 50.0 * 0.9;
+            var totalEsperado = (totalEsperadoDaCerveja + totalEsperadoDaGeladeira) * 0.8;
+            carrinho.AdicionarProduto(geladeira);
+            carrinho.AdicionarProduto(cerveja);
+
+
+            // Act
+            var resultado = carrinho.FinalizarCompra();
+
+            // Assert
+            resultado.Should().Be(totalEsperado.ToString());
+        }
     }
 }
